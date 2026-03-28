@@ -14,7 +14,7 @@ const Header = ({ isHome }: { isHome?: boolean }) => {
 
   return (
     <>
-      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-charcoal/80 backdrop-blur">
+      <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2">
           {/* Logo */}
           <div className="flex items-center gap-3">

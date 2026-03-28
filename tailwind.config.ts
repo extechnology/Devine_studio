@@ -12,8 +12,9 @@ export default {
         accent: "#d31f2a",
       },
       fontFamily: {
-        heading: ["Inter", "sans-serif"],
-        body: ["Merriweather", "serif"],
+        heading: ["Montserrat", "sans-serif"],
+        body: ["Montserrat", "sans-serif"],
+        sans: ["Montserrat", "sans-serif"],
       },
       backgroundImage: {
         "dot-grid": "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)",
