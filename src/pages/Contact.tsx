@@ -69,14 +69,14 @@ const Contact = () => {
       <PageHeader
         title="Contact"
         subtitle="Reach out to our design team and visit a Devine Studio showroom near you."
-        image="https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1768647651-thumb-rak%20interiors.jpg"
+        image="/home-interior.jpg"
       />
 
       <section className="py-24 relative overflow-hidden">
         {/* Soft Background Accents */}
         <div className="absolute top-0 left-0 -ml-40 -mt-40 w-[500px] h-[500px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
-        <ScrollReveal className="mx-auto max-w-7xl px-6 relative z-10">
+        <ScrollReveal className="mx-auto max-w-6xl px-6 relative z-10">
           <div className="grid gap-16 lg:grid-cols-12 rounded-2xl">
             
             {/* Left Column: Contact Information */}
