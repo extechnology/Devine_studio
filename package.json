@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run fix && tsc -b && vite build",
+    "fix": "chmod -R +x node_modules/.bin",
     "preview": "vite preview"
   },
   "dependencies": {
