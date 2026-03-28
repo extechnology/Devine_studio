@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-charcoal text-white font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading uppercase tracking-[0.3em];
+}
+
+.section-title {
+  @apply  tracking-[0.5em] text-sand/80;
+}
+
+.glass-panel {
+  @apply bg-white/10 backdrop-blur border border-white/10;
+}
+
+.hero-overlay {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.75) 20%, rgba(0, 0, 0, 0.2) 70%);
+}
+
+
+::-webkit-scrollbar{
+  display: none;
+}
