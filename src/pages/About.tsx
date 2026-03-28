@@ -8,7 +8,7 @@ const About = () => {
       <PageHeader
         title="About Devine Studio"
         subtitle="An interior design house committed to timeless craft, precision manufacturing, and inspired living across South India."
-        image="https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1764238284-thumb-1640684345-thumb-about_rak.jpg"
+        image="/home-interior.jpg"
       />
       {/* <section className="bg-charcoalDark py-16">
         <ScrollReveal className="mx-auto grid max-w-6xl gap-5 px-6 ">

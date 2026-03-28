@@ -7,38 +7,38 @@ const projects = [
     id: 1,
     title: "The Vertex Residency",
     category: "Residential",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666774469-thumb-9dfefdfb-a1de-49cd-8bc9-10ae482212be.jpg"
+    image: "/home-interior.jpg",
   },
   {
     id: 2,
     title: "Nova Commercial Space",
     category: "Commercial",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666776214-thumb-1ef84c1f-bd8b-449d-8592-b1738cb529df.jpg"
+    image: "/home-interior.jpg",
   },
   {
     id: 3,
     title: "Lumina Penthouse",
     category: "Interior",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666776951-thumb-d4133618-50b5-4bdc-b716-855d118a944d.jpg"
+    image: "/home-interior2.jpg",
   },
   {
     id: 4,
     title: "Aura Boutique Hotel",
     category: "Commercial",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666853412-thumb-FGJFkhvjgc.jpg"
+    image: "/home-interior.jpg",
   },
   {
     id: 5,
     title: "Zenith Villa",
     category: "Residential",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666945935-thumb-e53aa85b-f33a-41de-83c6-82b886f4beef.jpg"
+    image: "/home-interior2.jpg",
   },
   {
     id: 6,
     title: "Urban Loft",
     category: "Interior",
-    image: "https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1666947791-thumb-375fdcca-201c-4ae9-9225-2d5b53d98737.jpg"
-  }
+    image: "/home-interior.jpg",
+  },
 ];
 
 const categories = ["All", "Residential", "Commercial", "Interior"];

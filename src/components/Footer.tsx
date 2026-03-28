@@ -1,4 +1,10 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="border-t border-white/10 bg-charcoalDark/90">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.2fr_1fr_1fr]">
@@ -10,15 +16,15 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <div className="mb-3 text-xs uppercase tracking-[0.4em] text-white/60">
+          <div className="mb-4 text-xs uppercase tracking-[0.4em] text-white/60">
             Quick Links
           </div>
-          <ul className="space-y-2 text-sm text-white/70">
-            <li>Home</li>
-            <li>About Us</li>
-            <li>Products</li>
-            <li>Gallery</li>
-            <li>Contact</li>
+          <ul className="space-y-3 text-sm text-white/70">
+            <li><Link to="/" onClick={scrollToTop} className="transition-colors hover:text-sand">Home</Link></li>
+            <li><Link to="/about" onClick={scrollToTop} className="transition-colors hover:text-sand">About Us</Link></li>
+            <li><Link to="/products" onClick={scrollToTop} className="transition-colors hover:text-sand">Products</Link></li>
+            <li><Link to="/gallery" onClick={scrollToTop} className="transition-colors hover:text-sand">Services</Link></li>
+            <li><Link to="/contact" onClick={scrollToTop} className="transition-colors hover:text-sand">Contact</Link></li>
           </ul>
         </div>
         <div>
