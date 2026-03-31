@@ -3,11 +3,12 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
-import Gallery from "./pages/Gallery";
+import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ProductDetail from "./pages/ProductDetail";
 import ProjectAndGallery from "./pages/ProjectAndGallery";
 import ScrollToTop from "./components/ScrollToTop";
+import Gallery from "./pages/Gallery";  
 
 const App = () => {
   return (
@@ -20,7 +21,8 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/projects-gallery" element={<ProjectAndGallery />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/:category" element={<Gallery />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>

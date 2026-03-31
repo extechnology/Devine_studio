@@ -4,35 +4,12 @@ import ScrollReveal from "../components/ScrollReveal";
 
 const locations = [
   {
-    title: "Cochin Office & Showroom",
+    title: "DIVINE INTERIOR & FURNITURES",
     lines: [
-      "D1-CC 487/15, Service Road",
-      "Kakkanad, Kochi 682019",
-      "Tel: +91 97456 12345",
-    ],
-  },
-  {
-    title: "Trivandrum Office & Showroom",
-    lines: [
-      "TC 84/2248, 12, 3rd",
-      "Pettah, Trivandrum 695024",
-      "Tel: +91 97456 12345",
-    ],
-  },
-  {
-    title: "Calicut Office & Showroom",
-    lines: [
-      "14/2386, 1st Floor",
-      "Thadambatt, Calicut 673019",
-      "Tel: +91 97456 12345",
-    ],
-  },
-  {
-    title: "Bangalore Office & Showroom",
-    lines: [
-      "1982/8, 27th Main, HSR",
-      "Bangalore 560102",
-      "Tel: +91 97456 12345",
+      "📍 Thenhipalam, Puthur Pallikkal",
+      "📞 +91 9388 67 87 68, +91 9037 78 77 88",
+      "📧 divineclt@gmail.com",
+      "🌐 divinestudio.in",
     ],
   },
 ];
@@ -101,15 +78,15 @@ const Contact = () => {
                     with your Work ID / Project Reference number.
                   </p>
                   <p className="text-sm font-medium tracking-wide">
-                    Tel: +91 95677 66644 <br /> 
-                    Email: support@devinestudio.com
+                    Tel: +91 9388 67 87 68, +91 9037 78 77 88 <br /> 
+                    Email: divineclt@gmail.com
                   </p>
                 </div>
               </div>
 
               {/* Showrooms */}
-              <h3 className="text-xs font-heading tracking-[0.35em] text-white/50 mb-6 uppercase">Our Showrooms</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h3 className="text-xs font-heading tracking-[0.35em] text-white/50 mb-6 uppercase">Our Office</h3>
+              <div className="grid sm:grid-cols-1 gap-4">
                 {locations.map((location) => (
                   <div key={location.title} className="p-5 rounded-lg bg-white/[0.02] border border-white/5 hover:border-white/20 transition-colors duration-300">
                     <h4 className="text-xs font-heading tracking-wider mb-2 text-white/90">{location.title}</h4>
