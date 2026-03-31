@@ -57,7 +57,7 @@ const NewsSlider: React.FC = () => {
   const visibleItems = [data[index], data[(index + 1) % data.length]];
 
   return (
-    <section className="bg-[#2b2b2b] text-white py-16 md:py-20 overflow-hidden">
+    <section className="bg-[#2b2b2b] text-white pt-16 md:pt-20 pb-20 md:pb-28 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-xl md:text-3xl tracking-[0.4em] mb-8">
@@ -82,7 +82,7 @@ const NewsSlider: React.FC = () => {
 
                 {/* Overlay (OUTSIDE overflow-hidden) */}
                 <div className="relative">
-                  <div className="absolute -top-20 left-5 w-[90%] bg-[#2b2b2b] p-6 transform translate-y-6 group-hover:translate-y-0 transition duration-500 z-10">
+                  <div className="absolute -top-20 left-5 w-[90%] bg-[#2b2b2b] p-6 shadow transform translate-y-6 group-hover:translate-y-0 transition duration-500 z-10">
                     <p className="text-xs tracking-widest text-gray-400 mb-2">
                       {item.subtitle}
                     </p>
