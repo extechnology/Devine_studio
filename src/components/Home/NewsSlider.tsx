@@ -61,8 +61,8 @@ const NewsSlider: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6">
         {/* Heading */}
         <h2 className="text-xl md:text-3xl tracking-[0.4em] mb-8">
-          <span className="text-white">CURRENT</span>{" "}
-          <span className="text-[#c6a47e]">NEWS</span>
+          <span className="text-white">PROJECT</span>{" "}
+          <span className="text-[#c6a47e]">INSIGHTS</span>
         </h2>
 
         {/* Slider */}
