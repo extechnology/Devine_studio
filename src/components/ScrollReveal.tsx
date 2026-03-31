@@ -4,9 +4,10 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  threshold?: number;
 }
 
-const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps) => {
+const ScrollReveal = ({ children, className = "", delay = 0, threshold = 0.1 }: ScrollRevealProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef<HTMLDivElement>(null);
 
@@ -20,7 +21,7 @@ const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: threshold, rootMargin: "0px 0px -50px 0px" }
     );
 
     const currentRef = domRef.current;
