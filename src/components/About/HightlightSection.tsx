@@ -73,7 +73,7 @@ const HighlightSection: React.FC = () => {
               ALL OVER SOUTH INDIA
             </h3>
 
-            <p className="text-gray-300 text-xs leading-relaxed">
+            <p className="text-gray-300 text-xs text-justify leading-relaxed">
               Our journey began over 15 years ago in Calicut, driven by a
               passion for craftsmanship and interior excellence. What started as
               a small venture in furniture manufacturing and interior design has

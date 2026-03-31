@@ -1,89 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
 import ScrollReveal from "../components/ScrollReveal";
-
-const mockCategories = [
-  { name: "Chairs", count: 100 },
-  { name: "Tables", count: 150 },
-  { name: "Sofas & Seating", count: 78 },
-  { name: "Beds", count: 125 },
-  { name: "Storage Units", count: 101 },
-  { name: "Desks & Workstations", count: 2 },
-  { name: "TV Units", count: 45 },
-  { name: "Dining Sets", count: 30 },
-  { name: "Bookshelves & Display Units", count: 60 },
-  { name: "Shoe Racks", count: 25 },
-  { name: "Dressing Tables", count: 40 },
-  { name: "Sideboards & Buffets", count: 20 },
-  { name: "Cradles & Kids Furniture", count: 15 },
-  { name: "Outdoor Furniture", count: 35 },
-];
-
-const mockProducts = [
-  {
-    id: 1,
-    category: "Chairs",
-    title: "Classic Solid Back Dining Chair",
-    price: "12,999",
-    image: "/home-interior.jpg",
-  },
-  {
-    id: 2,
-    category: "Chairs",
-    title: "Modern Minimalist Lounge Chair",
-    price: "18,500",
-    image: "/home-interior2.jpg",
-  },
-  {
-    id: 3,
-    category: "Tables",
-    title: "Rustic Oak Coffee Table",
-    price: "24,000",
-    image: "/home-interior.jpg",
-  },
-  {
-    id: 4,
-    category: "Sofas & Seating",
-    title: "Premium Leather 3-Seater Sofa",
-    price: "85,000",
-    image: "/home-interior2.jpg",
-  },
-  {
-    id: 5,
-    category: "Beds",
-    title: "King Size Platform Bed with Storage",
-    price: "65,000",
-    image: "/home-interior.jpg",
-  },
-  {
-    id: 6,
-    category: "Storage Units",
-    title: "Tall Narrow Bookcase",
-    price: "15,500",
-    image: "/home-interior2.jpg",
-  },
-  {
-    id: 7,
-    category: "TV Units",
-    title: "Floating Wall TV Console",
-    price: "22,000",
-    image: "/home-interior.jpg",
-  },
-  {
-    id: 8,
-    category: "Dining Sets",
-    title: "6-Seater Marble Top Dining Set",
-    price: "1,20,000",
-    image: "/home-interior2.jpg",
-  },
-  {
-    id: 9,
-    category: "Desks & Workstations",
-    title: "Ergonomic Office Desk",
-    price: "35,000",
-    image: "/home-interior.jpg",
-  },
-];
+import { mockCategories, mockProducts } from "../data/products";
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("All Categories");
@@ -179,7 +98,7 @@ const Products = () => {
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredProducts.map((product, index) => (
                   <ScrollReveal threshold={0.05} delay={(index % 6) * 100} key={product.id}>
-                    <div className="group flex rounded-md flex-col h-full bg-transparent border border-white/20 hover:border-sand transition-all duration-300 shadow-sm cursor-pointer relative overflow-hidden">
+                    <Link to={`/product/${product.id}`} className="group flex rounded-sm flex-col h-full bg-transparent border border-white/20 hover:border-sand transition-all duration-300 shadow-sm cursor-pointer relative overflow-hidden">
                       
                       {/* Product Image */}
                       <div className="w-full h-72 sm:h-64 overflow-hidden relative bg-black/40 border-b border-white/20">
@@ -210,7 +129,7 @@ const Products = () => {
                         </div>
                       </div>
 
-                    </div>
+                    </Link>
                   </ScrollReveal>
                 ))}
               </div>
