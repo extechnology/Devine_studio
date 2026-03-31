@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "About Us", to: "/about" },
+  { label: "Service", to: "/gallery" }, // Linking to the existing services/gallery
   { label: "Products", to: "/products" },
-  { label: "Services", to: "/gallery" },
-  { label: "Contact", to: "/contact" },
+  { label: "Projects & Gallery", to: "/projects-gallery" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
 const Header = ({ isHome }: { isHome?: boolean }) => {
@@ -29,7 +30,7 @@ const Header = ({ isHome }: { isHome?: boolean }) => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-6 text-xs uppercase tracking-[0.35em] text-white/70 md:flex">
+          <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.35em] text-white/70 md:flex">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
