@@ -38,7 +38,7 @@ const HighlightSection: React.FC = () => {
 
   return (
     <section
-      className="relative py-20 md:py-28 text-white"
+      className="relative py-20 md:py-20 text-white"
       style={{
         backgroundColor: "#2b2b2b",
         backgroundImage:

@@ -18,7 +18,7 @@ const AboutSection = ({
   const previewText = content.slice(0, 180) + "...";
 
   return (
-    <div className="relative w-full my-12 md:my-20">
+    <div className="relative w-full">
       {/* IMAGE CAROUSEL / CONTAINER */}
       <div className={`relative w-full md:w-[65%] group overflow-hidden ${reverse ? "md:ml-auto" : ""}`}>
         <img
