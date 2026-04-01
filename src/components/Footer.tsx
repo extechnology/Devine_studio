@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
           <div className="text-lg font-heading tracking-[0.4em]">
-            Devine Studio
+            Divinestudio
           </div>
           <p className="text-sm text-white/70">
             Crafted interiors with timeless elegance, blending bespoke design
@@ -91,7 +91,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs uppercase tracking-[0.4em] text-white/50">
-        © 2026 Devine Studio. All rights reserved.
+        © 2026 Divinestudio. All rights reserved.
       </div>
     </footer>
   );

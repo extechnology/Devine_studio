@@ -36,7 +36,7 @@ const AboutSection = ({
       >
         <div className="bg-black/80 backdrop-blur-md p-8 md:p-12 shadow-2xl border border-white/5">
           <p className="text-[10px] tracking-[0.3em] text-[#c6a47e] mb-4 uppercase font-semibold">
-            About Devine
+            About Divine
           </p>
           <h3 className="text-xl md:text-2xl font-heading tracking-[0.2em] text-white mb-6 uppercase">
             {title}

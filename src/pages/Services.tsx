@@ -52,8 +52,8 @@ const Services = () => {
   return (
     <div className="bg-charcoal min-h-screen text-white font-body selection:bg-accent selection:text-white">
       <PageHeader
-        title="Gallery"
-        subtitle="A glimpse into signature homes and spaces curated by Devine Studio."
+        title="Services"
+        subtitle="A glimpse into signature homes and spaces curated by Divinestudio."
         image={projects[0]?.image || "/home-interior.jpg"}
       />
 

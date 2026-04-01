@@ -17,7 +17,7 @@ const Home = () => {
       <section className="relative min-h-screen">
         <img
           src={heroImage}
-          alt="Devine Studio"
+          alt="Divinestudio"
           className="h-screen w-full object-cover"
         />
         <div className="absolute inset-0 hero-overlay" />
@@ -45,7 +45,7 @@ const Home = () => {
               A Journey of Excellence
             </p>
             <p className="mt-6 text-base text-justify text-white/70 font-body leading-relaxed">
-              Devinestudio is a trusted name in interior design and wooden
+              Divinestudio is a trusted name in interior design and wooden
               furniture, rooted in Calicut, Kerala. With over 2 decades of
               expertise, we deliver customized solutions for homes, commercial,
               and industrial spaces. From elegant interiors to quality furniture
@@ -108,7 +108,7 @@ const Home = () => {
               <div className="w-full h-[1px] bg-white/30 mb-6" />
 
               <p className="text-gray-300 text-justify text-xs leading-relaxed tracking-wide">
-                Interior designing at Devinestudio blends creativity,
+                Interior designing at Divinestudio blends creativity,
                 functionality, and precision to transform spaces into inspiring
                 environments. We create customized designs for residential,
                 commercial, and industrial spaces, focusing on aesthetics and

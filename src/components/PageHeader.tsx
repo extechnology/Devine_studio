@@ -11,7 +11,7 @@ const PageHeader = ({ title, subtitle, image }: PageHeaderProps) => {
       <div className="absolute inset-0 hero-overlay" />
       <div className="absolute inset-0 flex items-end">
         <div className="mx-auto w-full max-w-6xl px-6 pb-16">
-          <p className="section-title">Devine Studio</p>
+          <p className="section-title">Divinestudio</p>
           <h1 className="mt-4 text-3xl font-heading tracking-[0.4em] md:text-5xl">
             {title}
           </h1>

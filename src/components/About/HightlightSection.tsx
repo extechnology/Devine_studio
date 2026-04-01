@@ -66,7 +66,7 @@ const HighlightSection: React.FC = () => {
         <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:w-[45%] mt-8 md:mt-0">
           <div className="bg-black/70 backdrop-blur-md p-6 md:p-10 shadow-xl">
             <p className="text-xs tracking-[0.3em] text-[#c6a47e] mb-4">
-              DEVINE HIGHLIGHTS
+              DIVINE HIGHLIGHTS
             </p>
 
             <h3 className="text-xl md:text-2xl tracking-[0.2em] mb-4">
@@ -82,7 +82,7 @@ const HighlightSection: React.FC = () => {
               Our mission has always been to transform spaces into meaningful
               experiences through thoughtful design and precision. This
               commitment has helped us build lasting client relationships. Nine
-              years ago, we launched Devinestudio, marking a milestone in our
+              years ago, we launched Divinestudio, marking a milestone in our
               vision to become a leader in interior and furniture solutions
               across India.
             </p>
