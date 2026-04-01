@@ -65,12 +65,12 @@ const HighlightSection: React.FC = () => {
         {/* RIGHT OVERLAY PANEL */}
         <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:w-[45%] mt-8 md:mt-0">
           <div className="bg-black/70 backdrop-blur-md p-6 md:p-10 shadow-xl">
-            <p className="text-xs tracking-[0.3em] text-[#c6a47e] mb-4">
+            <p className="text-xs tracking-[0.3em] text-[#c6a47e] mb-2">
               DIVINE HIGHLIGHTS
             </p>
 
-            <h3 className="text-xl md:text-2xl tracking-[0.2em] mb-4">
-              ALL OVER SOUTH INDIA
+            <h3 className="text-lg md:text-lg tracking-[0.2em] mb-2">
+              Transforming spaces with style Delivering quality that lasts
             </h3>
 
             <p className="text-gray-300 text-xs text-justify leading-relaxed">
@@ -82,7 +82,7 @@ const HighlightSection: React.FC = () => {
               Our mission has always been to transform spaces into meaningful
               experiences through thoughtful design and precision. This
               commitment has helped us build lasting client relationships. Nine
-              years ago, we launched Divinestudio, marking a milestone in our
+              years ago, we launched Devinestudio, marking a milestone in our
               vision to become a leader in interior and furniture solutions
               across India.
             </p>
