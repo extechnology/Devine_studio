@@ -5,9 +5,7 @@ import BeforeAndAfterSkeleton from "../../skeletons/BeforeAndAfterSkeleton";
 const BeforeAndAfter: React.FC = () => {
   const { data: beforeAndAfter, isLoading } = useBeforeAndAfter();
   
-  if (isLoading) {
-    return <BeforeAndAfterSkeleton />;
-  }
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -100,6 +98,12 @@ const BeforeAndAfter: React.FC = () => {
     posRef.current = { x: 50, y: 50 };
   }, []);
 
+
+  if (isLoading) {
+    return <BeforeAndAfterSkeleton />;
+  }
+
+  
   return (
     <div className="py-16 bg-white dark:bg-charcoal transition-colors duration-500 overflow-hidden relative">
       <div className="absolute inset-0 z-0 bg-neutral-50 dark:bg-neutral-900/40 pattern-grid-lg text-neutral-200 dark:text-neutral-800 opacity-50" />
