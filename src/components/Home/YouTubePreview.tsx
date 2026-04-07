@@ -11,8 +11,6 @@ const getYouTubeId = (url: string) => {
 const YouTubePreview: React.FC = () => {
   const { data: youtubeLink, isLoading } = useYouTubeLink();
 
-  if (isLoading) return <YouTubePreviewSkeleton />;
-
   const videoUrl = youtubeLink?.[0]?.link;
   const videoId = videoUrl ? getYouTubeId(videoUrl) : "";
 
@@ -21,6 +19,9 @@ const YouTubePreview: React.FC = () => {
   const thumbnail = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
+  if (isLoading) {
+    return <YouTubePreviewSkeleton />;
+  }
   return (
     <div className="w-full md:h-screen h-auto relative overflow-hidden">
       <a

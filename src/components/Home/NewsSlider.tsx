@@ -14,10 +14,7 @@ const NewsSlider: React.FC = () => {
   const [index, setIndex] = useState(0);
   const { data: projectInsights, isLoading } = useProjectInsights();
 
-  if (isLoading) {
-    return <NewsSliderSkeleton />;
-  }
-
+  
   // Auto slide
   useEffect(() => {
     if (!projectInsights || projectInsights.length === 0) return;
@@ -33,6 +30,11 @@ const NewsSlider: React.FC = () => {
   const visibleItems = projectInsights && projectInsights.length > 0 
     ? [projectInsights[index], projectInsights[(index + 1) % projectInsights.length]]
     : [];
+
+    if (isLoading) {
+      return <NewsSliderSkeleton />;
+    }
+
 
   return (
     <section className="bg-[#2b2b2b] text-white pt-16 md:pt-20 pb-20 md:pb-28 overflow-hidden">
