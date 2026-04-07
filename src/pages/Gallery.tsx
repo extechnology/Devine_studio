@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import useGallery from "../hooks/useGallery";
+import { useParams } from "react-router-dom";
 
 const projectGalleryData = Array.from({ length: 25 }).map((_, i) => ({
   id: i + 1,
@@ -15,12 +17,14 @@ const projectGalleryData = Array.from({ length: 25 }).map((_, i) => ({
 
 const Gallery = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const { data: gallery } = useGallery();
+  const { category } = useParams();
   const itemsPerPage = 10;
   const totalPages = Math.ceil(projectGalleryData.length / itemsPerPage);
-
+  const galleryImages = gallery?.find((image) => image.title === category);
   const currentItems = projectGalleryData.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   // Scroll to top of gallery section when page changes
@@ -43,7 +47,7 @@ const Gallery = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 border-t border-l border-white/20">
-          {currentItems.map((item) => (
+          {galleryImages?.images?.map((item) => (
             <div
               key={item.id}
               className="group flex flex-col bg-white/5 border-b border-r border-white/20 hover:bg-white/10 transition-colors duration-300 cursor-pointer overflow-hidden relative"
@@ -51,14 +55,14 @@ const Gallery = () => {
               <div className="h-48 w-full bg-black/40 overflow-hidden relative">
                 <img
                   src={item.image}
-                  alt={item.location}
+                  alt={item?.title}
                   className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-transform duration-[1500ms] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent mix-blend-multiply opacity-50" />
               </div>
               <div className="p-3 text-center border-t border-white/20 bg-charcoal/40 backdrop-blur-sm z-10">
                 <p className="text-[9px] sm:text-[10px] text-white/50 group-hover:text-sand transition-colors font-heading tracking-widest uppercase font-medium">
-                  {item.location}
+                  {item?.title}
                 </p>
               </div>
             </div>
@@ -134,6 +138,6 @@ const Gallery = () => {
       </ScrollReveal>
     </div>
   );
-}
+};
 
-export default Gallery
+export default Gallery;

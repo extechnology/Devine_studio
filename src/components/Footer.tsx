@@ -9,8 +9,8 @@ const Footer = () => {
     <footer className="border-t border-white/10 bg-charcoalDark/90">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
-          <div className="text-lg font-heading tracking-[0.4em]">
-            Divinestudio
+          <div className="">
+            <img src="/devine-logo.png" className="h-36 w-auto" alt="" />
           </div>
           <p className="text-sm text-white/70">
             Crafted interiors with timeless elegance, blending bespoke design
@@ -78,20 +78,56 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+        
         <div>
-          <div className="mb-3 text-xs uppercase tracking-[0.4em] text-white/60">
-            Our Branches
+          <div className="mb-4 text-xs uppercase tracking-[0.4em] text-white/60">
+            Policies
           </div>
-          <ul className="space-y-2 text-sm text-white/70">
-            <li>Cochin Studio</li>
-            <li>Trivandrum Studio</li>
-            <li>Bangalore Studio</li>
-            <li>Calicut Studio</li>
+          <ul className="space-y-3 text-sm text-white/70">
+            <li>
+              <Link
+                to="/privacy-policy"
+                onClick={scrollToTop}
+                className="transition-colors hover:text-sand"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terms-conditions"
+                onClick={scrollToTop}
+                className="transition-colors hover:text-sand"
+              >
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/return-policy"
+                onClick={scrollToTop}
+                className="transition-colors hover:text-sand"
+              >
+                Return Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/shipping-policy"
+                onClick={scrollToTop}
+                className="transition-colors hover:text-sand"
+              >
+                Shipping Policy
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-white/10 py-6 text-center text-xs uppercase tracking-[0.4em] text-white/50">
-        © 2026 Divinestudio. All rights reserved.
+        © 2026 Divinestudio. All rights reserved.{" "}
+        <a href="https://exmedia.in" className="hover:text-sand">
+          powered by exmedia
+        </a>
       </div>
     </footer>
   );

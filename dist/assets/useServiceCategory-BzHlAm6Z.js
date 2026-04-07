@@ -1,0 +1,1 @@
+import{n as e,t}from"./axiosInstance-C227ASkY.js";var n=async()=>(await t.get(`api/services/`)).data,r=()=>e({queryKey:[`service-category`],queryFn:n});export{r as t};

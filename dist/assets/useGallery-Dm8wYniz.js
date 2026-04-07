@@ -1,0 +1,1 @@
+import{n as e,t}from"./axiosInstance-C227ASkY.js";var n=async()=>(await t.get(`api/gallery/`)).data,r=()=>e({queryKey:[`gallery`],queryFn:n});export{r as t};

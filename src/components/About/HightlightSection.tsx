@@ -1,40 +1,37 @@
 import React, { useEffect, useState } from "react";
-
-interface Slide {
-  id: number;
-  title: string;
-  image: string;
-}
-
-const slides: Slide[] = [
-  {
-    id: 1,
-    title: "TAMIL NADU",
-    image: "/home-interior.jpg",
-  },
-  {
-    id: 2,
-    title: "KERALA",
-    image: "/home-interior2.jpg",
-  },
-  {
-    id: 3,
-    title: "KARNATAKA",
-    image: "/home-interior.jpg",
-  },
-];
+import useAboutUs from "../../hooks/useAboutUs";
 
 const HighlightSection: React.FC = () => {
-  const [index, setIndex] = useState(0);
+  const { data: aboutUs } = useAboutUs();
 
-  // Auto slide
+  const [sectionIndex, setSectionIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const currentSection = aboutUs?.[sectionIndex];
+  const images = currentSection?.images || [];
+
+  // 🔥 Image auto slide (faster)
   useEffect(() => {
+    if (!images.length) return;
+
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 3000);
+      setImageIndex((prev) => (prev + 1) % images.length);
+    }, 2500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images]);
+
+  // 🔥 Section change (slower)
+  useEffect(() => {
+    if (!aboutUs?.length) return;
+
+    const interval = setInterval(() => {
+      setSectionIndex((prev) => (prev + 1) % aboutUs.length);
+      setImageIndex(0); // reset image when section changes
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, [aboutUs]);
 
   return (
     <section
@@ -49,45 +46,34 @@ const HighlightSection: React.FC = () => {
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* LEFT IMAGE CAROUSEL */}
         <div className="relative w-full md:w-[65%] group overflow-hidden">
-          <img
-            key={slides[index].id}
-            src={slides[index].image}
-            alt={slides[index].title}
-            className="w-full h-[300px] md:h-[420px] object-cover transition duration-700 group-hover:scale-105"
-          />
-
-          {/* BIG TITLE ON IMAGE */}
-          <h2 className="absolute top-10 left-10 text-3xl md:text-5xl font-bold tracking-widest">
-            {slides[index].title}
-          </h2>
+          {images.length > 0 && (
+            <img
+              key={images[imageIndex]?.image} // 🔥 forces smooth transition
+              src={images[imageIndex]?.image}
+              alt="about-image"
+              className="w-full h-[300px] md:h-[420px] object-cover transition duration-700 ease-in-out group-hover:scale-105"
+            />
+          )}
         </div>
 
-        {/* RIGHT OVERLAY PANEL */}
-        <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:w-[45%] mt-8 md:mt-0">
-          <div className="bg-black/70 backdrop-blur-md p-6 md:p-10 shadow-xl">
-            <p className="text-xs tracking-[0.3em] text-[#c6a47e] mb-2">
-              DIVINE HIGHLIGHTS
-            </p>
+        {/* RIGHT TEXT */}
+        {currentSection && (
+          <div className="relative md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 md:w-[45%] mt-8 md:mt-0 transition-all duration-500">
+            <div className="bg-black/70 backdrop-blur-md p-6 md:p-10 shadow-xl border border-white/10">
+              <p className="text-xs tracking-[0.3em] text-[#c6a47e] mb-2 uppercase">
+                {currentSection.sub_title}
+              </p>
 
-            <h3 className="text-lg md:text-lg tracking-[0.2em] mb-2">
-              Transforming spaces with style Delivering quality that lasts
-            </h3>
+              <h3 className="text-lg md:text-xl tracking-[0.2em] mb-4 font-heading uppercase">
+                {currentSection.title}
+              </h3>
 
-            <p className="text-gray-300 text-xs text-justify leading-relaxed">
-              Our journey began over 15 years ago in Calicut, driven by a
-              passion for craftsmanship and interior excellence. What started as
-              a small venture in furniture manufacturing and interior design has
-              grown into a trusted industry name. Built on dedication, skill,
-              and innovation, we consistently deliver quality-driven results.
-              Our mission has always been to transform spaces into meaningful
-              experiences through thoughtful design and precision. This
-              commitment has helped us build lasting client relationships. Nine
-              years ago, we launched Devinestudio, marking a milestone in our
-              vision to become a leader in interior and furniture solutions
-              across India.
-            </p>
+              <p className="text-gray-300 text-xs text-justify leading-relaxed font-light">
+                {currentSection.description}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

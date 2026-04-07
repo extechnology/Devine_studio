@@ -1,11 +1,23 @@
 import React, { useRef, useState, useEffect } from "react";
+import useBeforeAndAfter from "../../hooks/useBeforeAndAfter";
+import BeforeAndAfterSkeleton from "../../skeletons/BeforeAndAfterSkeleton";
 
 const BeforeAndAfter: React.FC = () => {
+  const { data: beforeAndAfter, isLoading } = useBeforeAndAfter();
+  
+  if (isLoading) {
+    return <BeforeAndAfterSkeleton />;
+  }
   const containerRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+
+
+  const before = beforeAndAfter?.[0]?.before;
+  const after = beforeAndAfter?.[0]?.after;
+
 
   // Use refs for the cursor position to avoid React re-renders on every mouse move
   const posRef = useRef({ x: 50, y: 50 });
@@ -120,7 +132,7 @@ const BeforeAndAfter: React.FC = () => {
         >
           {/* Base Layer: Before Image */}
           <img
-            src="/home-interior.jpg"
+            src={before}
             alt="Before Design"
             draggable={false}
             className={`absolute inset-0 w-full h-full object-cover select-none transition-all duration-[1500ms] ease-out ${
@@ -139,7 +151,7 @@ const BeforeAndAfter: React.FC = () => {
             }}
           >
             <img
-              src="/home-interior2.jpg"
+              src={after}
               alt="After Design"
               draggable={false}
               className="absolute inset-0 w-full h-full object-cover select-none"

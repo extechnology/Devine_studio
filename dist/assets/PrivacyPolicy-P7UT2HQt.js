@@ -1,0 +1,1 @@
+import{n as e,t}from"./jsx-runtime-D57Vegw5.js";e();var n=t(),r=()=>(0,n.jsx)(`div`,{children:`PrivacyPolicy`});export{r as default};

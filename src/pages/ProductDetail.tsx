@@ -2,10 +2,18 @@ import { useParams, Link } from "react-router-dom";
 import { mockProducts } from "../data/products";
 import PageHeader from "../components/PageHeader";
 import { useEffect } from "react";
+import useProducts from "../hooks/useProducts";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = mockProducts.find((p) => p.id === Number(id)) || mockProducts[0];
+  const { data: products } = useProducts();
+
+  const product = products?.find((p) => p.id === Number(id));
+
+  const relatedProducts = products?.filter(
+    (item) => item.category_name === product?.category_name,
+  );
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,8 +33,8 @@ const ProductDetail = () => {
             {/* Image (Left) */}
             <div className="w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px] bg-black/40 border-b lg:border-b-0 lg:border-r border-white/20 p-8 flex items-center justify-center relative overflow-hidden group">
               <img
-                src={product.image}
-                alt={product.title}
+                src={product?.image}
+                alt={product?.name}
                 className="max-w-full max-h-[500px] object-contain transition-transform duration-700 group-hover:scale-105"
               />
             </div>
@@ -34,19 +42,19 @@ const ProductDetail = () => {
             {/* Info (Right) */}
             <div className="w-full lg:w-1/2 flex flex-col p-8 sm:p-12">
               <h2 className="text-3xl lg:text-4xl font-heading mb-4 leading-tight">
-                {product.title}
+                {product?.name}
               </h2>
               <div className="mb-6 flex items-end gap-4 border-b border-white/10 pb-6">
                 <span className="text-white/40 line-through text-lg block">
-                  ₹ {product.originalPrice || "0,000"}.00
+                  ₹ {product?.old_price || "0,000"}.00
                 </span>
                 <span className="text-sand text-3xl font-semibold">
-                  ₹ {product.price}.00
+                  ₹ {product?.price}.00
                 </span>
               </div>
 
               <p className="text-white/70 text-sm leading-relaxed mb-10 flex-grow">
-                {product.description ||
+                {product?.description ||
                   "This exceptional piece blends modern design with structural integrity. Designed specifically to elevate any space while providing maximum utility. Comes with standard industry assurances and warranty."}
               </p>
 
@@ -68,7 +76,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center px-2 hover:text-sand transition-colors">
                   <span className="font-bold text-sand mb-2 text-sm">
-                    3 Years
+                    {product?.warranty || "1 Year"}
                   </span>
                   <span className="text-white/60 text-xs">Warranty</span>
                 </div>
@@ -87,7 +95,7 @@ const ProductDetail = () => {
             </h3>
             <div className="border border-white/20 bg-white/5 p-8 sm:p-12 min-h-[200px] shadow-sm hover:border-white/30 transition-colors">
               <p className="text-white/70 leading-relaxed max-w-4xl text-sm sm:text-base">
-                {product.fullDescription ||
+                {product?.description ||
                   "A beautifully crafted piece of furniture that brings sophistication and resilience to interior setups. Combining robust materials with ergonomic finesse, it promises longevity without compromising on aesthetic appeal. Seamlessly blends into diverse decors whether residential or commercial."}
               </p>
             </div>
@@ -108,8 +116,8 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
-              {mockProducts
-                .filter((p) => p.id !== product.id)
+              {relatedProducts
+                ?.filter((p) => p.id !== product?.id)
                 .slice(0, 4)
                 .map((related) => (
                   <Link
@@ -121,18 +129,18 @@ const ProductDetail = () => {
                       <img
                         src={related.image}
                         className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-transform duration-[1500ms] group-hover:scale-110"
-                        alt={related.title}
+                        alt={related.name}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent opacity-60 mix-blend-multiply" />
                       <div className="absolute top-4 left-4">
                         <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[9px] uppercase tracking-widest font-semibold border border-white/10 text-white/80">
-                          {related.category}
+                          {related.category_name}
                         </span>
                       </div>
                     </div>
                     <div className="p-5 bg-white/5 group-hover:bg-white/10 transition-colors flex flex-col justify-between min-h-[100px]">
                       <h4 className="font-heading text-sm text-white/90 group-hover:text-sand tracking-wider leading-relaxed mb-3">
-                        {related.title}
+                        {related.name}
                       </h4>
                       <p className="font-heading font-semibold text-xs tracking-widest text-sand/90">
                         ₹ {related.price}/-

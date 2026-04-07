@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import ScrollReveal from "../components/ScrollReveal";
 import { projects } from "../components/ServiceData";
-
+import useBannerImages from "../hooks/useBannerImages";
+import { Link } from "react-router-dom";
+import useServiceCategory from "../hooks/useServiceCategory";
 
 const categories = [
   "All",
@@ -13,31 +15,81 @@ const categories = [
   "Wood and Plywood Crafting",
 ];
 
+const sharedParagraph =
+  "We offers comprehensive services, including interior designing and execution, manufacturing and distribution of wooden furniture for domestic and commercial needs, and expert consultation for interior projects. We also provide specialized plywood finishing works for external clients, ensuring precision, quality craftsmanship, and reliable solutions tailored to meet diverse requirements.";
+
+const categoryDescriptions: Record<string, string> = {
+  All: sharedParagraph,
+  Residential: sharedParagraph,
+  Commercial: sharedParagraph,
+  Industrial: sharedParagraph,
+  "Customised Furniture":
+    "We craft bespoke furniture pieces tailored precisely to your vision, space, and lifestyle. Every design is thoughtfully engineered for both function and aesthetics — from hand-finished cabinetry and statement wardrobes to elegant bookshelves and custom bed frames — built to stand the test of time.",
+  "Wood and Plywood Crafting":
+    "Our wood and plywood crafting division specialises in premium-grade finishing works for interior panels, structural cladding, and architectural joinery. We serve both in-house projects and external clients, delivering flawless veneer applications, edge banding, and precision CNC-cut components with exacting quality standards.",
+};
+
 const Services = () => {
   const [filter, setFilter] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const { data: banners } = useBannerImages();
+  const { data: serviceCategory } = useServiceCategory();
+  const serviceBanner = banners?.find(
+    (banner) => banner.banner_type == "services",
+  );
+
+  const transformedData = serviceCategory?.map((item) => {
+    const mainImage =
+      item.images?.find((img) => img.is_main)?.image ||
+      item.images?.[0]?.image ||
+      "/home-interior.jpg";
+
+    return {
+      id: item.id,
+      title: item.name,
+      category: item.service_name,
+      image: mainImage,
+      images: item.images,
+    };
+  });
+  
+  const [filteredProjects, setFilteredProjects] = useState(
+    transformedData || [],
+  );
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 6;
 
+  const serviceCategories = serviceCategory?.map(
+    (item) => item?.service_name,
+  );
+
+  const serviceCategoryData = [...new Set(serviceCategories)]
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
   const currentItems = filteredProjects.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
-  useEffect(() => {
-    setIsAnimating(true);
-    const timer = setTimeout(() => {
-      setFilteredProjects(
-        filter === "All" ? projects : projects.filter((p) => p.category === filter)
-      );
-      setCurrentPage(1); // Reset to page 1 unconditionally on filter
-      setIsAnimating(false);
-    }, 300); // Duration matches CSS opacity transition
-    
-    return () => clearTimeout(timer);
-  }, [filter]);
+  
+
+ useEffect(() => {
+   setIsAnimating(true);
+
+   const timer = setTimeout(() => {
+     const data = transformedData || [];
+
+     setFilteredProjects(
+       filter === "All"
+         ? data
+         : data.filter((item) => item.category === filter),
+     );
+
+     setCurrentPage(1);
+     setIsAnimating(false);
+   }, 300);
+
+   return () => clearTimeout(timer);
+ }, [filter, serviceCategory]);
 
   const handlePageChange = (newPage: number) => {
     if (newPage === currentPage) return;
@@ -54,7 +106,7 @@ const Services = () => {
       <PageHeader
         title="Services"
         subtitle="A glimpse into signature homes and spaces curated by Divinestudio."
-        image={projects[0]?.image || "/home-interior.jpg"}
+        image={serviceBanner?.image || "/home-interior.jpg"}
       />
 
       <section className="py-24 relative overflow-hidden">
@@ -62,7 +114,10 @@ const Services = () => {
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
         <div className="absolute top-1/2 left-0 -ml-40 -mb-40 w-96 h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
-        <ScrollReveal threshold={0} className="mx-auto max-w-7xl px-6 relative z-10">
+        <ScrollReveal
+          threshold={0}
+          className="mx-auto max-w-7xl px-6 relative z-10"
+        >
           {/* Header & Filter Section */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 space-y-8 md:space-y-0">
             <div className="max-w-xl">
@@ -71,20 +126,14 @@ const Services = () => {
                 Designed for life Built with perfection Delivered right when you
                 need it
               </h2>
-              <p className="text-white/70 text-xs leading-relaxed max-w-lg">
-                We offers comprehensive services, including interior designing
-                and execution, manufacturing and distribution of wooden
-                furniture for domestic and commercial needs, and expert
-                consultation for interior projects. We also provide specialized
-                plywood finishing works for external clients, ensuring
-                precision, quality craftsmanship, and reliable solutions
-                tailored to meet diverse requirements.
+              <p className="text-white/70 text-xs leading-relaxed max-w-lg transition-all duration-300">
+                {categoryDescriptions[filter]}
               </p>
             </div>
 
             {/* Filter Pills */}
             <div className="flex flex-wrap gap-3">
-              {categories.map((cat) => (
+              {["All", ...(serviceCategoryData || [])].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => filter !== cat && setFilter(cat)}
@@ -136,7 +185,9 @@ const Services = () => {
 
                     {/* Hover Link Box */}
                     <div className="opacity-0 -translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 flex items-center mt-4 text-xs font-heading text-sand tracking-widest uppercase">
-                      <span className="mr-3">View Project</span>
+                      <Link to={`/service-images/${project.title}`}>
+                        <span className="mr-3">View Project</span>
+                      </Link>
                       <svg
                         width="18"
                         height="18"
@@ -161,11 +212,10 @@ const Services = () => {
           {/* Pagination Controls */}
           {totalPages > 1 && (
             <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-white/10 pt-8">
-              
               <div className="flex font-heading tracking-widest font-bold text-sm bg-charcoal">
                 {Array.from({ length: totalPages }).map((_, i) => (
-                  <button 
-                    key={i} 
+                  <button
+                    key={i}
                     className={`transition-colors px-3 py-1 ${currentPage === i + 1 ? "text-sand border-b-2 border-sand" : "text-white/40 hover:text-white"}`}
                     onClick={() => handlePageChange(i + 1)}
                   >
@@ -176,31 +226,54 @@ const Services = () => {
 
               <div className="flex items-center gap-8">
                 {/* Previous Button */}
-                <button 
+                <button
                   onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
                   className={`flex items-center gap-3 text-white/70 hover:text-sand transition-all duration-300 font-heading tracking-widest text-sm uppercase font-semibold group ${
-                    currentPage === 1 ? "opacity-0 pointer-events-none w-0 -mx-4" : "opacity-100 w-auto"
+                    currentPage === 1
+                      ? "opacity-0 pointer-events-none w-0 -mx-4"
+                      : "opacity-100 w-auto"
                   }`}
                 >
-                  <svg className="w-16 h-4 transition-transform group-hover:-translate-x-2 scale-x-[-1]" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 10H95M95 10L85 0M95 10L85 20" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+                  <svg
+                    className="w-16 h-4 transition-transform group-hover:-translate-x-2 scale-x-[-1]"
+                    viewBox="0 0 100 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 10H95M95 10L85 0M95 10L85 20"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                   <span>Prev</span>
                 </button>
 
                 {/* Next Button */}
-                <button 
-                  onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
+                <button
+                  onClick={() =>
+                    handlePageChange(Math.min(currentPage + 1, totalPages))
+                  }
                   disabled={currentPage === totalPages}
                   className="flex items-center gap-3 text-white/70 hover:text-sand disabled:opacity-30 disabled:hover:text-white/70 transition-all font-heading tracking-widest text-sm uppercase font-semibold group"
                 >
                   <span>Next</span>
-                  <svg className="w-16 h-4 transition-transform group-hover:translate-x-2" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 10H95M95 10L85 0M95 10L85 20" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+                  <svg
+                    className="w-16 h-4 transition-transform group-hover:translate-x-2"
+                    viewBox="0 0 100 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0 10H95M95 10L85 0M95 10L85 20"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </div>
-
             </div>
           )}
         </ScrollReveal>
