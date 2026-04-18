@@ -5,8 +5,8 @@ import ParallaxSkeleton from "../../skeletons/ParallaxSkeleton";
 const ParallaxSection: React.FC = () => {
   const { data: banners, isLoading } = useBannerImages();
 
-  const serviceBanner = banners?.find(
-    (banner) => banner.banner_type == "services",
+  const parallaxBanner = banners?.find(
+    (banner) => banner.banner_type == "parallax",
   );
 
   if (isLoading) {
@@ -16,7 +16,7 @@ const ParallaxSection: React.FC = () => {
     <section
       className="relative flex items-center justify-center py-20 md:py-32 bg-fixed bg-center bg-cover min-h-[60vh] md:min-h-screen"
       style={{
-        backgroundImage: `url('${serviceBanner?.image || "/home-interior2.jpg"}')`,
+        backgroundImage: `url('${parallaxBanner?.image || "/home-interior2.jpg"}')`,
       }}
     >
       {/* Dark Overlay for readability */}

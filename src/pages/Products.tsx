@@ -5,6 +5,7 @@ import ScrollReveal from "../components/ScrollReveal";
 import { mockCategories, mockProducts } from "../data/products";
 import useProducts from "../hooks/useProducts";
 import useCategories from "../hooks/useCategory";
+import useBannerImages from "../hooks/useBannerImages";
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("All Categories");
@@ -13,7 +14,11 @@ const Products = () => {
   const [priceInitialised, setPriceInitialised] = useState(false);
   const { data: products } = useProducts();
   const { data: categories } = useCategories();
+  const { data: banners } = useBannerImages();
 
+  const productsBanner = banners?.find(
+    (banner) => banner.banner_type == "products",
+  );
   // Derive real min / max from dynamic product data
   const computedMin = products?.length
     ? Math.min(...products.map((p) => Number(p.price)))
@@ -74,7 +79,7 @@ const Products = () => {
       <PageHeader
         title="Products"
         subtitle="Explore curated interior collections built for performance, luxury, and timeless appeal."
-        image={mockProducts[0].image}
+        image={productsBanner?.image || mockProducts[0].image}
       />
 
       <section className="pt-20">

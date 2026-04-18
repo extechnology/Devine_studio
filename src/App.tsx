@@ -47,8 +47,8 @@ const App = () => {
               path="/terms-conditions"
               element={<TermsAndConditions />}
             />
-            <Route path="/return-policy" element={<ReturnAndRefund />} />
-            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            {/* <Route path="/return-policy" element={<ReturnAndRefund />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} /> */}
           </Route>
         </Routes>
       </Suspense>

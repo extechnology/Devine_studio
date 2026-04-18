@@ -106,7 +106,7 @@ const About = () => {
           </div>
           <div className="h-64 overflow-hidden rounded-lg shadow-soft">
             <img
-              src="https://rakinteriors.com/trendcart/administrator/images/admin_uploads/1747032447-RAK%20Interiors%20Factory.jpg"
+              src="/factory.webp"
               alt="Factory"
               className="h-full w-full object-cover"
             />

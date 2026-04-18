@@ -25,11 +25,11 @@ const ProjectAndGallery = () => {
   const galleryBanner = banners?.find(
     (banner) => banner.banner_type === "gallery",
   );
+
+  console.log(gallery,"gallery");
+  
   const itemsPerPage = 10;
   const totalPages = Math.ceil(projectGalleryData.length / itemsPerPage);
-  const mainImage = gallery?.flatMap((item) =>
-    item.images.filter((image) => image.is_main_image === true),
-  );
 
   const currentItems = projectGalleryData.slice(
     (currentPage - 1) * itemsPerPage,
@@ -75,14 +75,17 @@ const ProjectAndGallery = () => {
                 className="group flex flex-col h-full bg-white/5 border border-white/20 rounded-md hover:border-sand transition-all duration-300 shadow-soft overflow-hidden"
               >
                 {/* Image Section */}
-                <div className="w-full h-72 sm:h-80 overflow-hidden relative bg-black/40 border-b border-white/20 pb-4">
-                  {mainImage?.map((image) => (
-                    <img
-                      src={image?.image}
-                      alt={segment.title}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-transform duration-[1500ms] group-hover:scale-105"
-                    />
-                  ))}
+                <div className="w-full h-72 sm:h-80 overflow-hidden relative bg-black/40 border-b border-white/20 ">
+                  {(() => {
+                    const mainImg = segment.images?.find((img: any) => img.is_main_image) || segment.images?.[0];
+                    return mainImg ? (
+                      <img
+                        src={mainImg.image}
+                        alt={segment.title}
+                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-transform duration-[1500ms] group-hover:scale-105"
+                      />
+                    ) : null;
+                  })()}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 to-transparent mix-blend-multiply opacity-70" />
                 </div>

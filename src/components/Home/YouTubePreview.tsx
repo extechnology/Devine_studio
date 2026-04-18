@@ -54,13 +54,13 @@ const YouTubePreview: React.FC = () => {
               {/* Inner gradient glow */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent opacity-60"></div>
 
-              {/* Play icon */}
+              {/* YouTube icon */}
               <svg
-                className="w-10 h-10 text-charcoal ml-1 relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+                className="w-14 h-14 text-[#FF0000] relative z-10 transition-transform duration-300 group-hover:scale-110"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path d="M8 5v14l11-7z" />
+                <path d="M21.582 6.186a2.68 2.68 0 0 0-1.884-1.895C17.986 3.8 12 3.8 12 3.8s-5.986 0-7.698.49A2.68 2.68 0 0 0 2.418 6.186C1.928 7.893 1.928 12 1.928 12s0 4.107.49 5.814a2.68 2.68 0 0 0 1.884 1.895c1.712.49 7.698.49 7.698.49s5.986 0 7.698-.49a2.68 2.68 0 0 0 1.884-1.895c.49-1.707.49-5.814.49-5.814s0-4.107-.49-5.814zm-11.83 8.784V9.03l5.57 2.97-5.57 2.97z" />
               </svg>
             </div>
           </div>

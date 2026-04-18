@@ -102,7 +102,7 @@ const Footer = () => {
                 Terms & Conditions
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 to="/return-policy"
                 onClick={scrollToTop}
@@ -119,7 +119,7 @@ const Footer = () => {
               >
                 Shipping Policy
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
