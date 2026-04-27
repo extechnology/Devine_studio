@@ -13,7 +13,7 @@ const AboutHome = () => {
       {homeImageAndText?.map((home) => (
         <section
           key={home.id}
-          className="max-w-6xl mx-auto  grid grid-cols-2 gap-4  py-24"
+          className="max-w-6xl mx-auto  grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-4  md:py-24 py-12 px-6 md:px-0"
         >
           <div className="content-center">
             <p className="section-title text-2xl mb-6">{home?.title}</p>
