@@ -42,7 +42,7 @@ const Gallery = () => {
       >
         <div className="mb-10">
           <h2 className="text-xl md:text-2xl font-heading tracking-widest uppercase bg-sand text-charcoal inline-block px-4 py-2 font-bold shadow-soft">
-            Home & Apartments
+            {category}
           </h2>
         </div>
 

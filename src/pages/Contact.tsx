@@ -327,12 +327,16 @@ const Contact = () => {
 
       {/* Full Width Map Section */}
       <section className="h-[400px] w-full bg-charcoalDark relative">
-        <div className="absolute inset-0 bg-charcoal/40 mix-blend-multiply z-10 pointer-events-none" />
-        <img
-          src="https://www.google.com/maps/vt?pb=!1m5!1m4!1i14!2i11664!3i7735!4i256!2m3!1e0!2sm!3i772536432!2m3!1e2!2sspotlit!5i1!3m13!2sen!3sIN!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!1e3!23i47083502!27m15!299174093m14!14m13!1m8!1m2!1y4253664324147758709!2y15281339341920421450!2s%2Fg%2F11b6t49mn1!4m2!1x99811742!2x763165957!15sgcid%3Ainterior_designer!2b0!3b0!6b0!8b0&key=AIzaSyCmL18misQw9KdwqGaw3zHkitj8vG6QF2Y&token=73985"
-          alt="Location Map"
-          className="h-full w-full object-cover grayscale opacity-80 z-0"
-        />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3781.0142984847726!2d75.7986411750484!3d11.224385288952934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDEzJzI3LjgiTiA3NcKwNDgnMDQuNCJF!5e1!3m2!1sen!2sin!4v1777629430716!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full h-full"
+        ></iframe>
       </section>
     </div>
   );

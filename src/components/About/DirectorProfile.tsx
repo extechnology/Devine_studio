@@ -119,15 +119,17 @@ const ManagingDirectorCard = () => {
 
 const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
   const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <div
-      className="relative group overflow-hidden cursor-pointer"
+      className="relative flex flex-col group cursor-pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => setExpanded(!expanded)}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-[3/4]">
+      <div className="relative overflow-hidden aspect-[3/4] w-full">
         <img
           src={executive.image}
           alt={executive.name}
@@ -139,7 +141,7 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
         {/* Gold shimmer line on hover */}
         <div
           className="absolute top-0 left-0 w-full h-[2px] bg-[#c6a47e] transition-transform duration-700 origin-left"
-          style={{ transform: hovered ? "scaleX(1)" : "scaleX(0)" }}
+          style={{ transform: hovered || expanded ? "scaleX(1)" : "scaleX(0)" }}
         />
 
         {/* Content overlay */}
@@ -147,13 +149,13 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
           <div
             className="transition-transform duration-500"
             style={{
-              transform: hovered ? "translateY(0)" : "translateY(8px)",
+              transform: hovered || expanded ? "translateY(0)" : "translateY(8px)",
             }}
           >
             <p
               className="text-[8px] tracking-[0.4em] uppercase mb-2 transition-all duration-300"
               style={{
-                color: hovered ? "#c6a47e" : "rgba(198,164,126,0.7)",
+                color: hovered || expanded ? "#c6a47e" : "rgba(198,164,126,0.7)",
               }}
             >
               {executive.role}
@@ -162,12 +164,12 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
               {executive.name}
             </h3>
 
-            {/* Bio – revealed on hover */}
+            {/* Bio – revealed on hover, hidden when expanded */}
             <div
               className="overflow-hidden transition-all duration-500 ease-in-out"
               style={{
-                maxHeight: hovered ? "120px" : "0px",
-                opacity: hovered ? 1 : 0,
+                maxHeight: hovered && !expanded ? "120px" : "0px",
+                opacity: hovered && !expanded ? 1 : 0,
               }}
             >
               <p className="text-[11px] text-gray-400 leading-relaxed mt-4 line-clamp-4">
@@ -176,15 +178,34 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
             </div>
           </div>
         </div>
+
+        {/* Hover border */}
+        <div
+          className="absolute inset-0 border transition-all duration-500 pointer-events-none"
+          style={{
+            borderColor: hovered || expanded ? "rgba(198,164,126,0.4)" : "transparent",
+          }}
+        />
       </div>
 
-      {/* Hover border */}
+      {/* Expanded Description below image */}
       <div
-        className="absolute inset-0 border transition-all duration-500 pointer-events-none"
+        className="overflow-hidden transition-all duration-500 ease-in-out"
         style={{
-          borderColor: hovered ? "rgba(198,164,126,0.4)" : "transparent",
+          maxHeight: expanded ? "1000px" : "0px",
+          opacity: expanded ? 1 : 0,
         }}
-      />
+      >
+        <div className="pt-4 pb-2 px-1">
+          <p className="text-[11px] text-gray-400 leading-relaxed">
+            {executive.description}
+          </p>
+          <div className="mt-3 flex items-center gap-2 text-[9px] tracking-[0.3em] uppercase text-[#c6a47e] font-semibold">
+            <span>Show Less</span>
+            <span className="w-6 h-[1px] bg-[#c6a47e]" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -223,7 +244,7 @@ const DirectorProfile = () => {
       </div>
 
       {/* Executive Directors Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 items-start">
         {executives.map((exec) => (
           <ExecutiveCard key={exec.id} executive={exec} />
         ))}
