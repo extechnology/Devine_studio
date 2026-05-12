@@ -172,7 +172,7 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
                 opacity: hovered && !expanded ? 1 : 0,
               }}
             >
-              <p className="text-[11px] text-gray-400 leading-relaxed mt-4 line-clamp-4">
+              <p className="text-[11px] text-gray-400  leading-relaxed mt-4 line-clamp-4">
                 {executive.description}
               </p>
             </div>
@@ -197,7 +197,7 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
         }}
       >
         <div className="pt-4 pb-2 px-1">
-          <p className="text-[11px] text-gray-400 leading-relaxed">
+          <p className="text-[11px] text-gray-400 text-justify leading-relaxed">
             {executive.description}
           </p>
           <div className="mt-3 flex items-center gap-2 text-[9px] tracking-[0.3em] uppercase text-[#c6a47e] font-semibold">
@@ -215,7 +215,7 @@ const DirectorProfile = () => {
   const executives = directorProfiles?.filter((item) => !item.is_primary) ?? [];
 
   return (
-    <section className="max-w-7xl mx-auto px-4  py-20">
+    <section className="max-w-7xl mx-auto px-4  py-10">
       {/* Section Header */}
       <div className="text-center mb-16">
         <p className="text-[9px] tracking-[0.6em] text-[#c6a47e] uppercase font-semibold mb-4">
