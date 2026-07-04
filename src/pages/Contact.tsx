@@ -6,14 +6,14 @@ import useBannerImages from "../hooks/useBannerImages";
 
 const locations = [
   {
-    type: "OFFICE ADDRESS",
+    type: "KOZHIKODE ADDRESS",
     title: "FEST OG ROAD",
     lines: ["Thiruvannoor", "Calicut", "Pincode: 673029"],
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3781.0142984847726!2d75.7986411750484!3d11.224385288952934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDEzJzI3LjgiTiA3NcKwNDgnMDQuNCJF!5e1!3m2!1sen!2sin!4v1777629430716!5m2!1sen!2sin",
   },
   {
-    type: "FACTORY ADDRESS",
+    type: "ADDRESS",
     title: "Building no 1/74/B",
     lines: [
       "Vattapparambu",
@@ -98,10 +98,10 @@ const Contact = () => {
                   <h3 className="text-xs font-heading tracking-[0.35em] mb-4 text-sand">
                     CUSTOMER CARE
                   </h3>
-                  <p className="text-sm text-white/70 leading-relaxed mb-4">
+                  {/* <p className="text-sm text-white/70 leading-relaxed mb-4">
                     Products giving you trouble? Reach out between 9:30 AM -
                     5:30 PM with your Work ID / Project Reference number.
-                  </p>
+                  </p> */}
                   <div className="space-y-4">
                     <a
                       href="tel:+919388678768"
