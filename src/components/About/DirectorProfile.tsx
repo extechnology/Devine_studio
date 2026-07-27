@@ -14,13 +14,20 @@ interface Director {
 const ManagingDirectorCard = () => {
   const [expanded, setExpanded] = useState(false);
   const { data: directorProfiles } = useDirectorProfiles();
-  const preview =
-    directorProfiles
-      ?.find((item) => item.is_primary === true)
-      ?.description?.slice(0, 200) + "...";
-  const managingDirector = directorProfiles?.find(
-    (item) => item.is_primary === true,
+  const profilesList = Array.isArray(directorProfiles)
+    ? directorProfiles
+    : Array.isArray((directorProfiles as any)?.results)
+    ? (directorProfiles as any).results
+    : Array.isArray((directorProfiles as any)?.data)
+    ? (directorProfiles as any).data
+    : [];
+
+  const managingDirector = profilesList.find(
+    (item: any) => item.is_primary === true,
   );
+  const preview = managingDirector?.description
+    ? managingDirector.description.slice(0, 200) + (managingDirector.description.length > 200 ? "..." : "")
+    : "";
   return (
     <div className="relative group w-full overflow-hidden mb-20">
       {/* Gold accent line top */}
@@ -212,7 +219,14 @@ const ExecutiveCard = ({ executive }: { executive: DirectorProfileType }) => {
 
 const DirectorProfile = () => {
   const { data: directorProfiles } = useDirectorProfiles();
-  const executives = directorProfiles?.filter((item) => !item.is_primary) ?? [];
+  const profilesList = Array.isArray(directorProfiles)
+    ? directorProfiles
+    : Array.isArray((directorProfiles as any)?.results)
+    ? (directorProfiles as any).results
+    : Array.isArray((directorProfiles as any)?.data)
+    ? (directorProfiles as any).data
+    : [];
+  const executives = profilesList.filter((item: any) => !item.is_primary);
 
   return (
     <section className="max-w-7xl mx-auto px-4  py-10">
@@ -244,9 +258,14 @@ const DirectorProfile = () => {
       </div>
 
       {/* Executive Directors Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 items-start">
-        {executives.map((exec) => (
-          <ExecutiveCard key={exec.id} executive={exec} />
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-start">
+        {executives.map((exec: any) => (
+          <div
+            key={exec.id}
+            className="w-[calc(50%-0.5rem)] md:w-[calc(25%-1.125rem)] min-w-[220px] max-w-[300px]"
+          >
+            <ExecutiveCard executive={exec} />
+          </div>
         ))}
       </div>
 

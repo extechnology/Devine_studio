@@ -9,13 +9,21 @@ const Hero = () => {
     return <HeroSkeleton />;
   }
 
+  const carouselItems = Array.isArray(heroCarousel)
+    ? heroCarousel
+    : Array.isArray((heroCarousel as any)?.results)
+    ? (heroCarousel as any).results
+    : Array.isArray((heroCarousel as any)?.data)
+    ? (heroCarousel as any).data
+    : [];
+
   return (
     <div>
-      {heroCarousel?.map((hero) => (
-        <div>
+      {carouselItems.map((hero: any, index: number) => (
+        <div key={hero.id || index} className="relative">
           <img
-            src={heroCarousel?.[0]?.image}
-            alt="Divinestudio"
+            src={hero?.image || carouselItems?.[0]?.image}
+            alt={hero?.title || "Divinestudio"}
             className="h-screen w-full object-cover"
           />
           <div className="absolute inset-0 hero-overlay" />
