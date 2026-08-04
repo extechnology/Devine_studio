@@ -1,6 +1,8 @@
 import React from "react";
+import useYouTubeLink from "../hooks/useYouTubeLink";
 
 const SocialSidebar = () => {
+
   return (
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 p-3 backdrop-blur-md bg-white/10 dark:bg-black/20 border border-white/20 rounded-l-2xl shadow-lg transition-all duration-300">
       <a
@@ -45,6 +47,23 @@ const SocialSidebar = () => {
           <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
           <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+      </a>
+      <a
+        href="https://www.youtube.com/@interiordesign123-divine"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white hover:text-red-600 hover:scale-110 transition-all duration-300"
+        aria-label="YouTube"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M21.582 6.186a2.68 2.68 0 0 0-1.884-1.895C17.986 3.8 12 3.8 12 3.8s-5.986 0-7.698.49A2.68 2.68 0 0 0 2.418 6.186C1.928 7.893 1.928 12 1.928 12s0 4.107.49 5.814a2.68 2.68 0 0 0 1.884 1.895c1.712.49 7.698.49 7.698.49s5.986 0 7.698-.49a2.68 2.68 0 0 0 1.884-1.895c.49-1.707.49-5.814.49-5.814s0-4.107-.49-5.814zm-11.83 8.784V9.03l5.57 2.97-5.57 2.97z" />
         </svg>
       </a>
       <a
