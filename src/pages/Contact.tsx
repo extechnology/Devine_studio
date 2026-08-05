@@ -11,20 +11,20 @@ const locations = [
     lines: ["Thiruvannoor", "Calicut", "Pincode: 673029"],
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3781.0142984847726!2d75.7986411750484!3d11.224385288952934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDEzJzI3LjgiTiA3NcKwNDgnMDQuNCJF!5e1!3m2!1sen!2sin!4v1777629430716!5m2!1sen!2sin",
-  },
-  {
-    type: "ADDRESS",
-    title: "Building no 1/74/B",
-    lines: [
-      "Vattapparambu",
-      "Peruvallur ",
-      "Malappuram",
-      "Parambilpeedika",
-      "Pincode: 676317",
-    ],
-    mapSrc:
-      "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3914.8682613372403!2d75.92538067504691!3d11.123187989047457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDA3JzIzLjUiTiA3NcKwNTUnNDAuNiJF!5e0!3m2!1sen!2sin!4v1778487438140!5m2!1sen!2sin",
-  },
+  }
+  // {
+  //   type: "ADDRESS",
+  //   title: "Building no 1/74/B",
+  //   lines: [
+  //     "Vattapparambu",
+  //     "Peruvallur ",
+  //     "Malappuram",
+  //     "Parambilpeedika",
+  //     "Pincode: 676317",
+  //   ],
+  //   mapSrc:
+  //     "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3914.8682613372403!2d75.92538067504691!3d11.123187989047457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDA3JzIzLjUiTiA3NcKwNTUnNDAuNiJF!5e0!3m2!1sen!2sin!4v1778487438140!5m2!1sen!2sin",
+  // },
 ];
 
 const Contact = () => {
@@ -127,13 +127,13 @@ const Contact = () => {
                           Call Us
                         </span>
                         <span className="text-sm font-medium text-white/90 group-hover/item:text-sand transition-colors">
-                          +91 9388 67 87 68
+                          +91 628280 43 42
                         </span>
                       </div>
                     </a>
 
                     <a
-                      href="mailto:divineclt@gmail.com"
+                      href="mailto:divineinteriorandfurniture@gmail.com"
                       className="flex items-center gap-4 group/item"
                     >
                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover/item:bg-sand/20 transition-all duration-300">
@@ -156,7 +156,7 @@ const Contact = () => {
                           Email Us
                         </span>
                         <span className="text-sm font-medium text-white/90 group-hover/item:text-sand transition-colors">
-                          divineclt@gmail.com
+                          divineinteriorandfurniture@gmail.com
                         </span>
                       </div>
                     </a>
@@ -455,8 +455,8 @@ const Contact = () => {
             </h2>
             <div className="w-24 h-px bg-sand/30 mx-auto mt-6" />
           </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
+            {/* grid lg:grid-cols-2 gap-12 */}
+          <div className="">
             {locations.map((loc, index) => (
               <div key={loc.type} id={`map-${index}`} className="space-y-6">
                 <div className="flex flex-col">
