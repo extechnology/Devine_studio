@@ -69,7 +69,7 @@ const Contact = () => {
     <div className="bg-charcoal min-h-screen text-white font-body">
       <PageHeader
         title="Contact"
-        subtitle="Reach out to our design team and visit a Devine Studio showroom near you."
+        subtitle="Reach out to our design team and visit a Divine Studio showroom near you."
         image={contactBanner?.image || "/home-interior.jpg"}
       />
 
