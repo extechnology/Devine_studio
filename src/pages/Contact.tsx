@@ -129,6 +129,9 @@ const Contact = () => {
                         <span className="text-sm font-medium text-white/90 group-hover/item:text-sand transition-colors">
                           +91 628280 43 42
                         </span>
+                        <span className="text-sm font-medium text-white/90 group-hover/item:text-sand transition-colors">
+                          +91 953948 69 94
+                        </span>
                       </div>
                     </a>
 
